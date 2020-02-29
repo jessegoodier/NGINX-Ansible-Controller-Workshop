@@ -1,20 +1,23 @@
 # Workshop Config Guide
 
 
-ssh into your VM using the username nginx and password Nginx1122!
-optional: set your hostname with: sudo hostnamectl set-hostname yourname and sudo reboot
+## Install NGINX Plus using Ansible:
 
-## Install NGINX Plus:
+1. Change directory into the cloned github repo 
+   1. >cd NGINX-Ansible-Controller-Workshop
+2. Look at the playbook to make sure it isn't doing anything fishy, note the host groups that will be targeted (loadbalancers). Also view the hosts files to see which host(s) will be updated.
+   1. >cat nginx_plus.yaml
+   2. >cat hosts
+3. Run the Ansible playbook to install NGINX Plus.
+   1. >ansible-playbook nginx_plus.yaml -b -i hosts
 
-1. Change directory into >cd NGINX-Core-AWS-Workshop. The certificate files you will need to install NGINX Plus are in this directory. 
-Either follow the NGINX Plus install guide <https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-plus/> (or optionally use the cheat script by typing >sh nginx-install-with-njs.sh  
 
+## Open the Controller GUI / Install agent on VM
 
-## Install Controler Agent
-
-2. Navigate to the contoller GUI, ignoring the certificate warning: <https://controller1.ddns.net> (User: nginx@nginx.com and Nginx1122!)
-   
-3. Click the upper right NGINX logo and Infrastructure section. Copy commands from Graphs>New Instance (on bottom left) to the plus instance. Ignore the error about the API path, we will configure that via the GUI.
+4. <https://controller1.ddns.net> (User: nginx@nginx.com / Nginx1122!)
+5. Click the upper left NGINX logo and Infrastructure section. Note that your instance isn't there. 
+6. Go back to your ssh session and run the controller agent install playbook.
+   1. nginx_controller_agent_3x.yaml -b -i hosts -e "user_email=nginx@nginx.com user_password=Nginx1122! controller_fqdn=controller1.ddns.net"
 
 ## Configure Load Balancing Within Controller gui
 

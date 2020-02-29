@@ -31,4 +31,4 @@ Note that a shared controller instance is already running, but if you wanted to 
 ## Next
 
 Contnue on to install and configure NGINX Plus:
-<https://github.com/jessegoodier/NGINX-Core-AWS-Workshop/blob/master/2-Workshop_Config_Guide.md>
+<https://github.com/jessegoodier/NGINX-Ansible-Controller-Workshop/blob/master/2-Workshop_Config_Guide.md>
