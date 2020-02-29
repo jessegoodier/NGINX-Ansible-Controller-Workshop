@@ -10,9 +10,11 @@ The username / password are: nginx / Nginx1122!
 
 Note: this workshop uses ansible roles that are currently not in ansible galaxy (as of 2/29/2020). If you want to duplicate this workshop in your own environment, add these roles: 
 
-ansible-galaxy install nginxinc.nginx 
-ansible-galaxy install git+https://github.com/brianehlert/ansible-role-nginx-controller-generate-token.git
-ansible-galaxy install git+https://github.com/brianehlert/ansible-role-nginx-controller-agent.git
+>ansible-galaxy install nginxinc.nginx 
+
+>ansible-galaxy install git+https://github.com/brianehlert/ansible-role-nginx-controller-generate-token.git
+
+>ansible-galaxy install git+https://github.com/brianehlert/ansible-role-nginx-controller-agent.git
 
 
 ------------
