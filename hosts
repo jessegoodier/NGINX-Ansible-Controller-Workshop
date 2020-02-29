@@ -1,0 +1,7 @@
+[loadbalancers]
+localhost ansible_user=nginx ansible_password=Nginx1122!
+
+
+[loadbalancers:vars]
+ansible_python_interpreter=/usr/bin/python2.7
+
