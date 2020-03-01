@@ -39,38 +39,27 @@
 
 ## Configure API Management
 
-1.  Navigate to Services>APIs and Create a workload group Your name Workload group. Add localhost on ports 8001 and 8002. Normally these would be different hosts (pool members)
-
+1.  Navigate to Services>APIs and Create a workload group Your name Workload group. Add ergast.com on port 80. 
 2.  On API Definitions create your "F1 Yourname" API with base path /api/f1
-
 3.  Hit save and add URI /seasons and /drivers. Enable documentation with response 200 and {"response":"2009"} as an example (you can make this up, it is just for future developers who might consume this API resource)
-
 4.  Click Add A Published API f1_api in prod and create a new application "yourname_f1_app"
-
 5.  Select the entry point, click save. 
-
 6.  Scroll to the bottom and add the routes to the resources we created.
-
 7.  Publish and wait for the success message.
-
 8.  curl a few of these examples:
-
 ```
-curl -k http://localhost/api/f1/seasons
-curl -k http://localhost/api/f1/drivers
-curl -k http://localhost/api/f1/drivers.json
-curl -k http://localhost/api/f1/drivers/arnold.json
+   curl -k http://localhost/api/f1/seasons
+   curl -k http://localhost/api/f1/drivers
+   curl -k http://localhost/api/f1/drivers.json
+   curl -k http://localhost/api/f1/drivers/arnold.json
 ```
 
-21. Because json is better, let's force all responses to be json. Edit the config and add a rule>rewrite rule matching ^(.*)$ to $1.json
-
+21. Edit your published API and add a rate limit policy.
 22. Publish and test a couple more requests.
 
 Optional, if you have time:
 
 23. Add an alert for too many 500 errors.
-
 24. Create a dashboard that you think might be useful in a NOC.
-
 25. access the Developer API Management Portal: http://3.17.61.103:8090
 Feel free to browse around the GUI to see other functionality. 
