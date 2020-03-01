@@ -1,9 +1,4 @@
 #!/bin/bash
-echo "Removing old F1 API containers"
-docker container rm -f workshop-f1-api workshop-db
-echo "Starting F1 API containers"
-sudo docker-compose -f ergast-f1-api/docker-compose.yaml up -d
-
 echo "Removing old workshop-api1 and api2 containers"
 sudo docker container rm -f workshop-api1 workshop-api2
 echo "Starting API1 and API2"
