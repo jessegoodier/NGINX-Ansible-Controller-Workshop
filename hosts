@@ -1,5 +1,5 @@
 [loadbalancers]
-localhost ansible_user=nginx ansible_password=Nginx1122!
+localhost ansible_user=nginx
 
 
 [loadbalancers:vars]

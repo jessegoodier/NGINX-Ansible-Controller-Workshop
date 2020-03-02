@@ -7,11 +7,12 @@ We will use an AWS VM provisioned for you.
 ## Installation Steps:
 
   1. ssh into your VM using the username nginx and password Nginx1122!
-  2. optional: set your hostname with: 
+  2. Set your hostname with: 
      1. sudo hostnamectl set-hostname yourname 
-  3. Run the script to install our required dependencies for the 
-     1. cd NGINX-Core-AWS-Workshop
-     2. sudo ./0-install-required-dependencies.sh\
+  3. Make sure you have the most recent script andRun the script to install our required dependencies for the 
+     1. >cd NGINX-Core-AWS-Workshop
+     2. >git pull 
+     3. >./0-install-required-dependencies.sh
   4. Run these tests to ensure the docker containers are up:
      1. >curl localhost:81
      2. >curl localhost:82
