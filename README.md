@@ -1,8 +1,8 @@
 # NGINX Ansible Controller Workshop
 
-This workshop will deploy an NGINX Plus instance using Ansible and connect that instance to NGINX Controller that is already running.
+This workshop is to show how to deploy NGINX using Ansible and then connect that NGINX Plus instance to NGINX Controller that is already running.
 
-The AWS instance provisioned for you already has ansible installed and this github repository cloned to it.
+The AWS VM is already provisioned for you and has ansible installed and this github repository cloned to it.
 The username / password are: nginx / Nginx1122!
 
 ------------
