@@ -1,7 +1,3 @@
----
-# ansible-playbook nginx_controller_agent.yaml -i loadbalancers -e "admin_email=user@company.com admin_password=userPassword" 
-# ansible-playbook nginx_controller_agent_3x.yaml -e "@nginx_install_controller_vars.yaml"
-
 - hosts: loadbalancers
   remote_user: ubuntu
   become: true
@@ -9,11 +5,6 @@
   gather_facts: yes
 
   tasks:
-  # - name: upgrade packages here.
-  #   apt:
-  #     update_cache: yes
-  #     upgrade: yes
-
   - name: install minimal support for python2 for Agent install script
     apt:
       name: "{{ packages }}"
@@ -24,7 +15,7 @@
       - libxerces-c3.2
 
   - include_role:
-      name: ansible-role-nginx-controller-generate-token
+      name: nginxinc.nginx_controller_generate_token
 
   - name: Get controller api key for agent registration
     uri:
@@ -43,4 +34,4 @@
 
   - name: install the agent
     include_role:
-      name: ansible-role-nginx-controller-agent
+      name: nginxinc.nginx_controller_agent
