@@ -26,16 +26,17 @@
 5. Click on the NGINX logo and select Services. On the right navigation, select App>Create App.
 6. Fill out the required fields with something you'll rememember (like yourname_app). Select the prod environment and hit submit.
 7. Select your app and create a component for it named time_component.
-8. Click next and create a new gateway, call it yourname_gw, hit next
-9. Select your NGINX instance, hit next and publish
+8. Click next and create a new gateway, call it yourname_gw, hit next.
+9. Select your NGINX instance, hit next.
 10. In the URI section, add https://time_server and http://time_server and hit done. 
-11. Select the aws-nlb certificate and only allow TLSv1.2 and TLS1.3 > next.
-12. Hit next down to Add a workload group. Name it yourname_workload_group 
+11. Select the nginx.ddns.net certificate and only allow TLSv1.2 and TLS1.3 > next.
+12. Hit next down to add a workload group. Name it time_server 
 13. Add 2 backend workload URIs: http://localhost:81 and http://localhost:82 Be sure to hit done after adding each URI.
 14. Hit publish
-15. Open a web browser to https://<your-aws-IP> and refresh a few times to see the load balancing (or use curl on the ssh client)
+15. Open a web browser to https://your-aws-IP and refresh a few times to see the load balancing (or use curl on the ssh client)
 16. View the changes made to /etc/nginx/nginx.conf on your host. 
     1.  >sudo nginx -T
+17. Remove your App.
 
 ## Configure API Management
 
