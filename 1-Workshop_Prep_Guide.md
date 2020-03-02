@@ -9,7 +9,7 @@ We will use an AWS VM provisioned for you.
   1. ssh into your VM using the username nginx and password Nginx1122!
   2. optional: set your hostname with: 
      1. sudo hostnamectl set-hostname yourname 
-  3. Run the the script to install our required dependencies for the 
+  3. Run the script to install our required dependencies for the 
      1. cd NGINX-Core-AWS-Workshop
      2. sudo ./0-install-required-dependencies.sh\
   4. Run these tests to ensure the docker containers are up:
@@ -26,5 +26,5 @@ Note that a shared Controller instance is already running, but if you wanted to 
 
 ## Next
 
-Contnue on to install and configure NGINX Plus:
+Continue on to install and configure NGINX Plus:
 <https://github.com/jessegoodier/NGINX-Ansible-Controller-Workshop/blob/master/2-Workshop_Config_Guide.md>
