@@ -9,7 +9,7 @@ We will use an AWS VM provisioned for you.
   1. ssh into your VM using the username nginx and password Nginx1122!
   2. Set your hostname with: 
      1. sudo hostnamectl set-hostname yourname 
-  3. Make sure you have the most recent script andRun the script to install our required dependencies for the 
+  3. Make sure you have the most recent script and run the script to install our required dependencies for the workshop.
      1. >cd NGINX-Core-AWS-Workshop
      2. >git pull 
      3. >./0-install-required-dependencies.sh
