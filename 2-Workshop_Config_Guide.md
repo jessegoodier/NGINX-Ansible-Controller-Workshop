@@ -29,17 +29,17 @@
 8. Select your app and create a component for it named time_component.
 9. Click next and create a new gateway, call it yourname_gw, hit next.
 10. Select your NGINX instance, hit next.
-11. In the hostname section, add https://time_server and http://time_server and hit done. 
-12. Select the nginx.ddns.net certificate and only allow TLSv1.2 and TLS1.3 
 13. Publish the gateway.
 14. You will be back in your app and your gateway is selected, hit next.
-15. In your app, add a workload group. Name it time_server 
-16. Add 2 backend workload URIs: http://localhost:81 and http://localhost:82 Be sure to hit done after adding each URI.
-17. Hit publish
-18. Open a web browser to https://your-aws-IP and refresh a few times to see the load balancing (or use curl on the ssh client)
-19. View the changes made to /etc/nginx/nginx.conf on your host. 
+15. In the URI section, add https://time_server and http://time_server and hit done. 
+16. Select the nginx.ddns.net certificate and only allow TLSv1.2 and TLS1.3 
+17. In your app, add a workload group. Name it time_server 
+18. Add 2 backend workload URIs: http://localhost:81 and http://localhost:82 Be sure to hit done after adding each URI.
+19. Hit publish
+20. Open a web browser to https://your-aws-IP and refresh a few times to see the load balancing (or use curl on the ssh client)
+21. View the changes made to /etc/nginx/nginx.conf on your host. 
     1.  >sudo nginx -T
-20. Remove your app by removing the component first, then the app.
+22. Remove your app by removing the component first, then the app.
 
 ## Configure API Management
 
