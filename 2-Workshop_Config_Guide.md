@@ -27,28 +27,34 @@
 6. Fill out the required fields with something you'll rememember (like yourname_app). 
 7. Select the production environment and hit submit.
 8. Select your app and create a component for it named time_component.
-9. Click next and create a new gateway, call it yourname_gw, hit next.
+9. Click next and create a new gateway, call it yourname-gw, hit next.
 10. Select your NGINX instance, hit next.
 11. Under the hostnames, add http://localhost
 12. Publish the gateway.
 13. You will be back in your app and your gateway is selected, hit next.
-14. In the URI section, add https://time_server and http://time_server and hit done. 
-15. Select the nginx.ddns.net certificate and only allow TLSv1.2 and TLS1.3 
-16. In your app, add a workload group. Name it time_server 
-17. Add 2 backend workload URIs: http://localhost:81 and http://localhost:82 Be sure to hit done after adding each URI.
-18. Hit publish
-19. Open a web browser to https://your-aws-IP and refresh a few times to see the load balancing (or use curl on the ssh client)
-20. View the changes made to /etc/nginx/nginx.conf on your host. 
+14. In the URI section, add (link is on top right of screen) 
+    1.  >https://time_server 
+    2.  >http://time_server 
+15. Hit done. 
+16. Select the nginx.ddns.net certificate and only allow TLSv1.2 and TLS1.3 
+17. In your app, add a workload group. Name it time_server 
+18. Add 2 backend workload URIs: 
+    1.  >http://localhost:81
+    2.  >http://localhost:82
+    3.  Be sure to hit done after adding each URI.
+19. Hit publish
+20. Open a web browser to https://your-aws-IP and refresh a few times to see the load balancing (or use curl on the ssh client)
+21. View the changes made to /etc/nginx/nginx.conf on your host. 
     1.  >sudo nginx -T
-21. Remove your app by removing the component first, then the app.
+22. Remove your app by removing the component first, then the app.
 
 ## Configure API Management
 
-1.  Navigate to Services>APIs and Create a workload group Your name Workload group. Add ergast.com on port 80. 
+1.  Navigate to Services>APIs and view the workload group. (ergast.com:80) 
 2.  On API Definitions create your "F1 Yourname" API with base path /api/f1
 3.  Hit save and add URI /seasons and /drivers. Enable documentation with response 200 and {"response":"2009"} as an example (you can make this up, it is just for future developers who might consume this API resource)
 4.  Click Add A Published API f1_api in prod and create a new application "yourname_f1_app"
-5.  Select the entry point, click save. 
+5.  Select the entry point, click save.
 6.  Scroll to the bottom and add the routes to the resources we created.
 7.  Publish and wait for the success message.
 8.  curl a few of these examples:
@@ -63,10 +69,10 @@
 22. Publish and test a couple more requests.
 23. Review the JWT Identity Provider under the API Managment Section. A JWT has been configured. It is in this repo, named auth_jwt_key_file.jwk.
 24. Go back to your API Definition and edit your published API to require an Authentication Policy using the JWT Provider. 
-25. Publish and test a curl command using this token:
-   ````
-      curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjAwMDEifQ.eyJuYW1lIjoiUXVvdGF0aW9uIFN5c3RlbSIsInN1YiI6InF1b3RlcyIsImV4cCI6IjE2MDk0NTkxOTkiLCJpc3MiOiJNeSBBUEkgR2F0ZXdheSJ9.lJfCn7b_0mfKHKGk56Iu6CPGdJElG2UhFL64X47vu2M" localhost/api/f1/seasons
-````
+25. Publish and test a curl command using this token (which is in the script in option 2
+    1.  >curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjAwMDEifQ.eyJuYW1lIjoiUXVvdGF0aW9uIFN5c3RlbSIsInN1YiI6InF1b3RlcyIsImV4cCI6IjE2MDk0NTkxOTkiLCJpc3MiOiJNeSBBUEkgR2F0ZXdheSJ9.lJfCn7b_0mfKHKGk56Iu6CPGdJElG2UhFL64X47vu2M" localhost/api/f1/seasons
+    2.  >3-run-jwt-curl.sh
+
 
 Optional, if you have time:
 
