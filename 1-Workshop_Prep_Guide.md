@@ -10,9 +10,8 @@ We will use an AWS VM provisioned for you.
   2. Set your hostname with: 
      1. sudo hostnamectl set-hostname yourname 
   3. Make sure you have the most recent script and run the script to install our required dependencies for the workshop.
-     1. >cd NGINX-Core-AWS-Workshop
-     2. >git pull 
-     3. >./0-install-required-dependencies.sh
+     1. >cd NGINX-Ansible-Controller-Workshop
+     2. >./0-install-required-dependencies.sh
   4. Run these tests to ensure the docker containers are up:
      1. >curl localhost:81
      2. >curl localhost:82

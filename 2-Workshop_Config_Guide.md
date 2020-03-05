@@ -36,7 +36,7 @@
 15. Open a web browser to https://your-aws-IP and refresh a few times to see the load balancing (or use curl on the ssh client)
 16. View the changes made to /etc/nginx/nginx.conf on your host. 
     1.  >sudo nginx -T
-17. Remove your App.
+17. Remove your app by removing the component first, then the app.
 
 ## Configure API Management
 
