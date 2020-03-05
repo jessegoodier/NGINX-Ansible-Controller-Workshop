@@ -69,7 +69,7 @@
 22. Publish and test a couple more requests.
 23. Review the JWT Identity Provider under the API Managment Section. A JWT has been configured. It is in this repo, named auth_jwt_key_file.jwk.
 24. Go back to your API Definition and edit your published API to require an Authentication Policy using the JWT Provider. 
-25. Publish and test a curl command using this token (which is in the script in option 2
+25. Publish and test a curl command using this token (which is in the script in option 2). Alternatively, use postman.
     1.  >curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjAwMDEifQ.eyJuYW1lIjoiUXVvdGF0aW9uIFN5c3RlbSIsInN1YiI6InF1b3RlcyIsImV4cCI6IjE2MDk0NTkxOTkiLCJpc3MiOiJNeSBBUEkgR2F0ZXdheSJ9.lJfCn7b_0mfKHKGk56Iu6CPGdJElG2UhFL64X47vu2M" localhost/api/f1/seasons
     2.  >3-run-jwt-curl.sh
 
