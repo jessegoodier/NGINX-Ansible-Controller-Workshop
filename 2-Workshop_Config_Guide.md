@@ -7,7 +7,7 @@
 2. Look at the playbook to make sure it isn't doing anything fishy, note the host groups that will be targeted (loadbalancers). Also view the hosts files to see which host(s) will be updated.
    1. >cat nginx_plus.yaml
    2. >cat hosts
-3. Run the Ansible playbook to install NGINX Plus.
+3. Run the Ansible playbook to install NGINX Plus. (use option 1 or 2)
    1. >ansible-playbook nginx_plus.yaml -b -i hosts
    2. >./1-run-nginx_plus-playbook.sh
 
@@ -16,7 +16,7 @@
 
 4. <https://controller1.ddns.net> (User: nginx@nginx.com / Nginx1122!)
 5. Click the upper left NGINX logo and Infrastructure section>graphs. Note that your instance isn't there. 
-6. Go back to your ssh session and run the controller agent install playbook.
+6. Go back to your ssh session and run the controller agent install playbook. (use option 1 or 2)
    1. >ansible-playbook nginx_controller_agent_3x.yaml -b -i hosts -e "user_email=nginx@nginx.com user_password=Nginx1122! controller_fqdn=controller1.ddns.net"
    2. >./2-run-nginx_controller_agent_3x-playbook.sh
 
@@ -29,17 +29,18 @@
 8. Select your app and create a component for it named time_component.
 9. Click next and create a new gateway, call it yourname_gw, hit next.
 10. Select your NGINX instance, hit next.
-13. Publish the gateway.
-14. You will be back in your app and your gateway is selected, hit next.
-15. In the URI section, add https://time_server and http://time_server and hit done. 
-16. Select the nginx.ddns.net certificate and only allow TLSv1.2 and TLS1.3 
-17. In your app, add a workload group. Name it time_server 
-18. Add 2 backend workload URIs: http://localhost:81 and http://localhost:82 Be sure to hit done after adding each URI.
-19. Hit publish
-20. Open a web browser to https://your-aws-IP and refresh a few times to see the load balancing (or use curl on the ssh client)
-21. View the changes made to /etc/nginx/nginx.conf on your host. 
+11. Under the hostnames, add http://localhost
+12. Publish the gateway.
+13. You will be back in your app and your gateway is selected, hit next.
+14. In the URI section, add https://time_server and http://time_server and hit done. 
+15. Select the nginx.ddns.net certificate and only allow TLSv1.2 and TLS1.3 
+16. In your app, add a workload group. Name it time_server 
+17. Add 2 backend workload URIs: http://localhost:81 and http://localhost:82 Be sure to hit done after adding each URI.
+18. Hit publish
+19. Open a web browser to https://your-aws-IP and refresh a few times to see the load balancing (or use curl on the ssh client)
+20. View the changes made to /etc/nginx/nginx.conf on your host. 
     1.  >sudo nginx -T
-22. Remove your app by removing the component first, then the app.
+21. Remove your app by removing the component first, then the app.
 
 ## Configure API Management
 
