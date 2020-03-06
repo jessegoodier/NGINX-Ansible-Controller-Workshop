@@ -1,6 +1,5 @@
-sudo apt -y install docker.io docker-compose python2.7 jq
-sudo systemctl enable docker
-sudo sh start_containers.sh
+sudo apt update
+sudo apt -y install python2.7 jq
 sudo apt install software-properties-common
 sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt -y install ansible
