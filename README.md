@@ -1,4 +1,4 @@
-# NGINX Controller with Ansible Workshop
+# NGINX Controller with Ansible Workshop 
 
 This workshop is to show how to deploy NGINX Plus using Ansible and then connecting that NGINX Plus instance to NGINX Controller that is already running.
 
