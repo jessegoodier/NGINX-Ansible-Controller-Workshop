@@ -7,7 +7,7 @@
   1. >sudo hostnamectl set-hostname yourname 
 3. Install our required dependencies for the workshop.
    1. >cd NGINX-Ansible-Controller-Workshop 
-   2. >./0-install-required-dependencies.sh
+   2. >sh 0-install-required-dependencies.sh
 4. Verify that nginx is not running
   2. >curl localhost
 5. Change directory into the cloned github repo 
@@ -17,7 +17,7 @@
    2. >cat hosts
 7. Run the Ansible playbook to install NGINX Plus. (use option 1 or 2)
    1. >ansible-playbook nginx_plus.yaml -b -i hosts
-   2. >./1-run-nginx_plus-playbook.sh
+   2. >sh 1-run-nginx_plus-playbook.sh
 
 ## Open the Controller GUI / Install agent on VM
 
@@ -25,7 +25,7 @@
 9. Click the upper left NGINX logo and Infrastructure section>graphs. Note that your instance isn't there. 
 10. Go back to your ssh session and run the controller agent install playbook. (use option 1 or 2)
    1. >ansible-playbook nginx_controller_agent_3x.yaml -b -i hosts -e "user_email=nginx@nginx.com user_password=Nginx1122! controller_fqdn=controller1.ddns.net"
-   2. >./2-run-nginx_controller_agent_3x-playbook.sh
+   2. >sh 2-run-nginx_controller_agent_3x-playbook.sh
 
 ## Configure Load Balancing Within Controller GUI
 
@@ -78,7 +78,7 @@
 41. Go back to your API Definition and edit your published API to require an Authentication Policy using the JWT Provider. 
 42. Publish and test a curl command using this token (which is in the script in option 2). Alternatively, use postman.
     1.  >curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjAwMDEifQ.eyJuYW1lIjoiUXVvdGF0aW9uIFN5c3RlbSIsInN1YiI6InF1b3RlcyIsImV4cCI6IjE2MDk0NTkxOTkiLCJpc3MiOiJNeSBBUEkgR2F0ZXdheSJ9.lJfCn7b_0mfKHKGk56Iu6CPGdJElG2UhFL64X47vu2M" localhost/api/f1/seasons
-    2.  >3-run-jwt-curl.sh
+    2.  >sh 3-run-jwt-curl.sh
 
 
 Optional, if you have time:
