@@ -24,7 +24,7 @@
 8. <https://controller1.ddns.net> (User: admin@nginx.com / Nginx1122!)
 9. Click the upper left NGINX logo and Infrastructure section>graphs. Note that your instance isn't there. 
 10. Go back to your ssh session and run the controller agent install playbook. (use option 1 or 2)
-   1. >ansible-playbook nginx_controller_agent_3x.yaml -b -i hosts -e "user_email=nginx@nginx.com user_password=Nginx1122! controller_fqdn=controller1.ddns.net"
+   1. >ansible-playbook nginx_controller_agent_3x.yaml -b -i hosts -e "user_email=admin@nginx.com user_password=Nginx1122! controller_fqdn=controller1.ddns.net"
    2. >sh 2-run-nginx_controller_agent_3x-playbook.sh
 
 ## Configure Load Balancing Within Controller GUI
