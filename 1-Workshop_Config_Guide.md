@@ -46,8 +46,8 @@
 23. Select the nginx.ddns.net certificate and only allow TLSv1.2 and TLS1.3 
 24. In your app, add a workload group. Name it time_server 
 25. Add 2 backend workload URIs: 
-    1.  >http://localhost:81
-    2.  >http://localhost:82
+    1.  >http://18.223.169.105
+    2.  >http://3.16.214.214
     3.  Be sure to hit done after adding each URI.
 26. Hit publish
 27. Open a web browser to https://your-aws-IP and refresh a few times to see the load balancing (or use curl on the ssh client)
