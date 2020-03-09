@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo apt update
 sudo apt -y install python2.7 jq
 sudo apt install software-properties-common
