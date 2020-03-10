@@ -80,14 +80,14 @@
 
 ## Configure API Management
 
-31. Navigate to Services>APIs and view the workload group. (ergast.com:80)
-32. On API Definitions create your "F1 Yourname" API with base path /api/f1
-33. Hit save and add URI /seasons and /drivers. Enable documentation with response 200 and {"response":"2009"} as an example (you can make this up, it is just for future developers who might consume this API resource)
-34. Click Add A Published API f1_api in prod and create a new application "yourname_f1_app"
-35. Select the entry point, click save.
-36. Scroll to the bottom and add the routes to the resources we created.
-37. Publish and wait for the success message.
-38. curl a few of these examples:
+44. Navigate to Services>APIs and view the workload group. (ergast.com:80)
+45. On API Definitions create your "F1 Yourname" API with base path /api/f1
+46. Hit save and add URI /seasons and /drivers. Enable documentation with response 200 and {"response":"2009"} as an example (you can make this up, it is just for future developers who might consume this API resource)
+47. Click Add A Published API f1_api in prod and create a new application "yourname_f1_app"
+48. Select the entry point, click save.
+49. Scroll to the bottom and add the routes to the resources we created.
+50. Publish and wait for the success message.
+51. curl a few of these examples:
 ```
    curl -k http://localhost/api/f1/seasons
    curl -k http://localhost/api/f1/drivers
@@ -95,18 +95,18 @@
    curl -k http://localhost/api/f1/drivers/arnold.json
 ```
 
-38. Edit your published API and add a rate limit policy.
-39. Publish and test a couple more requests.
-40. Review the JWT Identity Provider under the API Managment Section. A JWT has been configured. It is in this repo, named auth_jwt_key_file.jwk.
-41. Go back to your API Definition and edit your published API to require an Authentication Policy using the JWT Provider. 
-42. Publish and test a curl command using this token (which is in the script in option 2). Alternatively, use postman.
+52. Edit your published API and add a rate limit policy.
+53. Publish and test a couple more requests.
+54. Review the JWT Identity Provider under the API Managment Section. A JWT has been configured. It is in this repo, named auth_jwt_key_file.jwk.
+55. Go back to your API Definition and edit your published API to require an Authentication Policy using the JWT Provider. 
+56. Publish and test a curl command using this token (which is in the script in option 2). Alternatively, use postman.
     1.  >curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6IjAwMDEifQ.eyJuYW1lIjoiUXVvdGF0aW9uIFN5c3RlbSIsInN1YiI6InF1b3RlcyIsImV4cCI6IjE2MDk0NTkxOTkiLCJpc3MiOiJNeSBBUEkgR2F0ZXdheSJ9.lJfCn7b_0mfKHKGk56Iu6CPGdJElG2UhFL64X47vu2M" localhost/api/f1/seasons
     2.  >sh 3-run-jwt-curl.sh
 
 
 Optional, if you have time:
 
-43. Add an alert for too many 500 errors.
-44. Create a dashboard that you think might be useful in a NOC.
-45. Access the Developer API Management Portal: <http://[3.19.238.184:8090>
+57. Add an alert for too many 500 errors.
+58. Create a dashboard that you think might be useful in a NOC.
+59. Access the Developer API Management Portal: <http://[3.19.238.184:8090>
 Feel free to browse around the GUI to see other functionality. 
