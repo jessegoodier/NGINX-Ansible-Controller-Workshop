@@ -76,18 +76,17 @@
     3.  curl localhost (run it several times to see the round robin)
     4.  curl -k https://localhost/ (to test https is working)
     5.  you can also test using the public IP of your VM in a browser
-40. Remove your app by removing the components first, then the app.
 
 ## Configure API Management
 
-30. Navigate to Services>APIs and view the workload group. (ergast.com:80) 
-31. On API Definitions create your "F1 Yourname" API with base path /api/f1
-32. Hit save and add URI /seasons and /drivers. Enable documentation with response 200 and {"response":"2009"} as an example (you can make this up, it is just for future developers who might consume this API resource)
-33. Click Add A Published API f1_api in prod and create a new application "yourname_f1_app"
-34. Select the entry point, click save.
-35. Scroll to the bottom and add the routes to the resources we created.
-36. Publish and wait for the success message.
-37. curl a few of these examples:
+31. Navigate to Services>APIs and view the workload group. (ergast.com:80)
+32. On API Definitions create your "F1 Yourname" API with base path /api/f1
+33. Hit save and add URI /seasons and /drivers. Enable documentation with response 200 and {"response":"2009"} as an example (you can make this up, it is just for future developers who might consume this API resource)
+34. Click Add A Published API f1_api in prod and create a new application "yourname_f1_app"
+35. Select the entry point, click save.
+36. Scroll to the bottom and add the routes to the resources we created.
+37. Publish and wait for the success message.
+38. curl a few of these examples:
 ```
    curl -k http://localhost/api/f1/seasons
    curl -k http://localhost/api/f1/drivers
