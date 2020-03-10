@@ -4,56 +4,78 @@
 
 1. ssh into your VM using the username nginx and password Nginx1122!
 2. Set your hostname with: 
-  1. >sudo hostnamectl set-hostname yourname 
+   1. >sudo hostnamectl set-hostname yourname 
 3. Install our required dependencies for the workshop.
    1. >cd NGINX-Ansible-Controller-Workshop 
    2. >sh 0-install-required-dependencies.sh
 4. Verify that nginx is not running
-  2. >curl localhost
-5. Change directory into the cloned github repo 
-   1. >cd NGINX-Ansible-Controller-Workshop 
-6. Look at the playbook to make sure it isn't doing anything fishy, note the host groups that will be targeted (loadbalancers). Also view the hosts files to see which host(s) will be updated.
+   1. >curl localhost
+5. Take a look at the playbook and note the host groups that will be targeted (loadbalancers). Also view the hosts files to see which host(s) will be updated. 
    1. >cat nginx_plus.yaml
    2. >cat hosts
-7. Run the Ansible playbook to install NGINX Plus. (use option 1 or 2)
-   1. >ansible-playbook nginx_plus.yaml -b -i hosts
-   2. >sh 1-run-nginx_plus-playbook.sh
+   3. >cat nginx_plus_vars.yaml
+6. Run the Ansible playbook to install NGINX Plus. (use option 1 or 2)
+   1. Full command: 
+         >ansible-playbook nginx_plus.yaml -b -i hosts
+   2. Scricpted equivalent
+         >sh 1-run-nginx_plus-playbook.sh
 
 ## Open the Controller GUI / Install agent on VM
 
-8. <https://controller1.ddns.net> (User: admin@nginx.com / Nginx1122!)
-9. Click the upper left NGINX logo and Infrastructure section>graphs. Note that your instance isn't there. 
-10. Go back to your ssh session and run the controller agent install playbook. (use option 1 or 2)
-   1. >ansible-playbook nginx_controller_agent_3x.yaml -b -i hosts -e "user_email=admin@nginx.com user_password=Nginx1122! controller_fqdn=controller1.ddns.net"
-   2. >sh 2-run-nginx_controller_agent_3x-playbook.sh
+7. <https://controller1.ddns.net> (User: admin@nginx.com / Nginx1122!)
+8. Click the upper left NGINX logo and Infrastructure section>graphs. Note that your instance isn't there. 
+9.  Go back to your ssh session and run the controller agent install playbook. (use option 1 or 2)
+    1. Full command: 
+       >ansible-playbook nginx_controller_agent_3x.yaml -b -i hosts -e "user_email=admin@nginx.com user_password=Nginx1122! controller_fqdn=controller1.ddns.net"
+    2. Scripted Equivalent: 
+       >sh 2-run-nginx_controller_agent_3x-playbook.sh
 
 ## Configure Load Balancing Within Controller GUI
 
+10. Go back to the Controller GUI and go to the Infrastructure>Graphs page
 11. Wait for the new instance to appear and then feel free to change the alias by clicking the settings (gear icon) so it is easy for you to find.
-12. Click on the NGINX logo and select Services. On the right navigation, select App>Create App.
-13. Fill out the required fields with something you'll rememember (like yourname_app). 
-14. Select the production environment and hit submit.
-15. Select your app and create a component for it named time_component.
-16. Click next and create a new gateway, call it yourname-gw, hit next.
-17. Select your NGINX instance, hit next.
-18. Under the hostnames, add http://localhost
-19. Publish the gateway.
-20. You will be back in your app and your gateway is selected, hit next.
-21. In the URI section, add (link is on top right of screen) 
-    1.  >https://time_server 
-    2.  >http://time_server 
-22. Hit done. 
-23. Select the nginx.ddns.net certificate and only allow TLSv1.2 and TLS1.3 
-24. In your app, add a workload group. Name it time_server 
-25. Add 2 backend workload URIs: 
-    1.  >http://18.223.169.105
-    2.  >http://3.16.214.214
+12. Click on the NGINX logo and select Services. Go to the Gateways
+13. Create a new gateway, call it yourname-gw
+14. Put it in the production environment and hit next.
+15. In the Placements, select your NGINX instance, hit next.
+16. Under the hostnames, add 
+    1.  http://nginx.ddns.net 
+    2.  https://nginx.ddns.net 
     3.  Be sure to hit done after adding each URI.
-26. Hit publish
-27. Open a web browser to https://your-aws-IP and refresh a few times to see the load balancing (or use curl on the ssh client)
-28. View the changes made to /etc/nginx/nginx.conf on your host. 
+17. Feel free to view the optional configuration options.
+18. Publish the gateway and wait on the Gateways screen until your status is green.
+19. On the leftmost column hit Apps to show the My Apps menu > select overview. Click one of the buttons that say Create App.
+20. Name your app yourname-app and put it in the production environment. 
+21. Hit submit.
+22. You should be brought to the Apps list and you see your app listed. You now need to create a Component for your app. There are at least four ways to create this first component, but here is one way that is also available later to add more components: Hover over your app and hit the eye icon under the View column. This page provides an Overview for this entire app. Hit Create Component near the upper-right corner of the page.
+23. Name the first component time1
+24. In the Gateways section, select your gateway.
+25. In the URI section, add (link is on top right of screen) uri: /time1
+26. Hit done. 
+27. In your app, add a workload group. Name it time1
+28. Add the backend workload URI: http://18.223.169.105
+29. Be sure to hit done after adding the URI.
+30. Hit publish
+31. Open a web browser to https://your-aws-IP/time1 and refresh a few times to see the load balancing (or use curl on the ssh client)
+32. View the changes made to /etc/nginx/nginx.conf on your host. 
     1.  >sudo nginx -T
-29. Remove your app by removing the component first, then the app.
+33. Repeat steps 23-32 adding a component for time2 and point it to http://3.16.214.214
+34. Add another component and name it both
+35. Select your gateway 
+36. In the URI section add both:
+    1.  http://nginx.ddns.net 
+    2.  https://nginx.ddns.net 
+    3.  Be sure to hit done after adding each URI.
+37. Click on Workload groups and add a workload group called both
+38. Add both of our backend workoad URIs:
+    1.  http://18.223.169.105
+    2.  http://18.223.169.105
+39. Test the new configuration with a few curl commands on your SSH session:
+    1.  curl localhost/time1
+    2.  curl localhost/time2
+    3.  curl localhost (run it several times to see the round robin)
+    4.  curl -k https://localhost/ (to test https is working)
+40. Remove your app by removing the component first, then the app.
 
 ## Configure API Management
 
