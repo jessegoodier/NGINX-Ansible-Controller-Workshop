@@ -75,7 +75,8 @@
     2.  curl localhost/time2
     3.  curl localhost (run it several times to see the round robin)
     4.  curl -k https://localhost/ (to test https is working)
-40. Remove your app by removing the component first, then the app.
+    5.  you can also test using the public IP of your VM in a browser
+40. Remove your app by removing the components first, then the app.
 
 ## Configure API Management
 
@@ -107,5 +108,5 @@ Optional, if you have time:
 
 43. Add an alert for too many 500 errors.
 44. Create a dashboard that you think might be useful in a NOC.
-45. Access the Developer API Management Portal: http://3.19.238.184:8090
+45. Access the Developer API Management Portal: <http://[3.19.238.184:8090>
 Feel free to browse around the GUI to see other functionality. 
