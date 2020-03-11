@@ -6,7 +6,7 @@
 2. Set your hostname with: 
    1. >sudo hostnamectl set-hostname yourname 
 3. Install our required dependencies for the workshop.
-   1. >cd NGINX-Ansible-Controller-Workshop 
+   1. >cd NGINX-Ansible-Controller-Workshop
    2. >sh 0-install-required-dependencies.sh
 4. Verify that nginx is not running
    1. >curl localhost
@@ -43,35 +43,36 @@
     1.  http://nginx.ddns.net 
     2.  https://nginx.ddns.net 
     3.  Be sure to hit done after adding each URI.
-18. Feel free to view the optional configuration options.
-19. Publish the gateway and wait on the Gateways screen until your status is green.
-20. On the leftmost column hit Apps to show the My Apps menu > select overview. Click one of the buttons that say Create App.
-21. Name your app yourname-app and put it in the production environment. 
-22. Hit submit.
-23. You should be brought to the Apps list and you see your app listed. You now need to create a Component for your app. There are at least four ways to create this first component, but here is one way that is also available later to add more components: Hover over your app and hit the eye icon under the View column. This page provides an Overview for this entire app. Hit Create Component near the upper-right corner of the page.
-24. Name the first component time1
-25. In the Gateways section, select your gateway.
-26. In the URI section, add (link is on top right of screen) uri: /time1
-27. Hit done. 
-28. Click next through the optional configuration items until you get to workload groups.
-29. Add a workload group. Name it time1
-30. Add the backend workload URI: http://18.223.169.105
-31. Be sure to hit done after adding the URI.
-32. Hit publish.
-33. Wait for the green Configured status. 
-34. Open a web browser to https://your-aws-IP/time1 and refresh a few times 
-35. View the changes made to /etc/nginx/nginx.conf on your host. 
+18. Select the nginx.ddns.net certificate and select all protocols.
+19. Feel free to view the optional configuration options.
+20. Publish the gateway and wait on the Gateways screen until your status is green.
+21. On the leftmost column hit Apps to show the My Apps menu > select overview. Click one of the buttons that say Create App.
+22. Name your app yourname-app and put it in the production environment. 
+23. Hit submit.
+24. You should be brought to the Apps list and you see your app listed. You now need to create a Component for your app. There are at least four ways to create this first component, but here is one way that is also available later to add more components: Hover over your app and hit the eye icon under the View column. This page provides an Overview for this entire app. Hit Create Component near the upper-right corner of the page.
+25. Name the first component time1
+26. In the Gateways section, select your gateway.
+27. In the URI section, add (link is on top right of screen) uri: /time1
+28. Hit done. 
+29. Click next through the optional configuration items until you get to workload groups.
+30. Add a workload group. Name it time1
+31. Add the backend workload URI: http://18.223.169.105
+32. Be sure to hit done after adding the URI.
+33. Hit publish.
+34. Wait for the green Configured status. 
+35. Open a web browser to https://your-aws-IP/time1 and refresh a few times 
+36. View the changes made to /etc/nginx/nginx.conf on your host. 
     1.  >sudo nginx -T
-36. Repeat steps 24-35 adding a component for time2 and point it to http://3.16.214.214
-37. Add another component and name it both.
-38. Select your gateway. 
-39. In the URI section add: / 
-40. Click done.
-41. Click on Workload groups and add a workload group called both
-42. Add both of our backend workoad URIs:
+37. Repeat steps 24-35 adding a component for time2 and point it to http://3.16.214.214
+38. Add another component and name it both.
+39. Select your gateway. 
+40. In the URI section add: / 
+41. Click done.
+42. Click on Workload groups and add a workload group called both
+43. Add both of our backend workoad URIs:
     1.  http://18.223.169.105
     2.  http://3.16.214.214
-43. Test the new configuration with a few curl commands on your SSH session:
+44. Test the new configuration with a few curl commands on your SSH session:
     1.  curl localhost/time1
     2.  curl localhost/time2
     3.  curl localhost (run it several times to see the round robin)
