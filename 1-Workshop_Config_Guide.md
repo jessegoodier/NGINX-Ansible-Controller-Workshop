@@ -2,7 +2,7 @@
 
 ## Install NGINX Plus using Ansible:
 
-1. ssh into your VM using the username nginx and password Nginx1122!
+1. ssh into your VM using the username ubuntu and password Nginx1122!
 2. Set your hostname with: 
    1. >sudo hostnamectl set-hostname yourname 
 3. Install our required dependencies for the workshop.
